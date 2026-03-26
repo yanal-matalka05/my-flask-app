@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>لعبة تخمين الأرقام</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🎮 لعبة تخمين الأرقام</h1>
+        <p id="intro" class="intro-text">خمِّن رقماً مميزاً بين <span class="highlight">{{ min_number }}</span> و <span class="highlight">{{ max_number }}</span></p>
+      </header>
+
+      <div class="card">
+        <div class="input-group">
+          <input id="guessInput" type="number" placeholder="أدخل تخمينك هنا" min="{{ min_number }}" max="{{ max_number }}" aria-label="حقل إدخال التخمين" />
+        </div>
+        <div class="button-group">
+          <button id="guessButton" class="btn btn-primary">إرسال التخمين</button>
+          <button id="newGameButton" class="btn btn-secondary">لعبة جديدة</button>
+        </div>
+      </div>
+
+      <div class="status">
+        <p id="feedback" class="feedback-message">مرحباً! اضغط على "لعبة جديدة" للبدء أو أدخل تخمينك.</p>
+        <p id="attempts" class="attempts-counter">المحاولات: <span>0</span></p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>استمتع باللعبة! 🎯</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
