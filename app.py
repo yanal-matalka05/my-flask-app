@@ -17,7 +17,7 @@ def index():
 def start_game():
     _start_game()
     return jsonify({
-        "message": f"تم بدء لعبة جديدة! خمِّن رقماً بين {MIN_NUMBER} و {MAX_NUMBER}.",
+        "message": f"A new game has started! Guess a number between {MIN_NUMBER} and {MAX_NUMBER}.",
         "attempts": 0,
         "finished": False,
     })
@@ -31,22 +31,22 @@ def guess():
     try:
         guess_value = int(data.get("guess", ""))
     except (TypeError, ValueError):
-        return jsonify({"error": "يرجى إدخال رقم صحيح."}), 400
+        return jsonify({"error": "Please enter a valid number."}), 400
 
     if not (MIN_NUMBER <= guess_value <= MAX_NUMBER):
-        return jsonify({"error": f"يجب أن يكون تخمينك بين {MIN_NUMBER} و {MAX_NUMBER}."}), 400
+        return jsonify({"error": f"Your guess must be between {MIN_NUMBER} and {MAX_NUMBER}."}), 400
 
     session["attempts"] += 1
     secret = session["secret_number"]
 
     if guess_value < secret:
-        result = "منخفض جداً! حاول مرة أخرى برقم أكبر."
+        result = "Too low! Try again with a larger number."
         finished = False
     elif guess_value > secret:
-        result = "مرتفع جداً! حاول مرة أخرى برقم أقل."
+        result = "Too high! Try again with a smaller number."
         finished = False
     else:
-        result = f"مبروك! لقد خمّنت الرقم الصحيح في {session['attempts']} محاولة!"
+        result = f"Congratulations! You guessed the correct number in {session['attempts']} attempt(s)!"
         finished = True
 
     if finished:
