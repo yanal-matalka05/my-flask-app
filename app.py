@@ -4,7 +4,7 @@ import random
 app = Flask(__name__)
 app.secret_key = "change_this_to_a_secure_random_value"
 
-MIN_NUMBER = 0
+MIN_NUMBER = 1
 MAX_NUMBER = 100
 
 @app.route("/")
