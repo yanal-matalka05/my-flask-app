@@ -49,13 +49,14 @@ def guess():
         result = f"Congratulations! You guessed the correct number in {session['attempts']} attempt(s)!"
         finished = True
 
+    attempts_count = session.get("attempts", 0)
     if finished:
         session.pop("secret_number", None)
         session.pop("attempts", None)
 
     return jsonify({
         "result": result,
-        "attempts": session.get("attempts", 0),
+        "attempts": attempts_count,
         "finished": finished,
     })
 
